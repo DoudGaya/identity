@@ -1,0 +1,12 @@
+{
+  "info":{"name":"Nillar Identity · Partner API","description":"Server-side integration examples. Set a sandbox key locally in Postman; do not share or export populated secrets. Hosted verification never returns identity numbers or documents.","schema":"https://schema.getpostman.com/json/collection/v2.1.0/collection.json"},
+  "variable":[{"key":"baseUrl","value":"https://pay.nillar.com/api/v1/identity/partner"},{"key":"apiKey","value":""},{"key":"verificationId","value":""}],
+  "auth":{"type":"bearer","bearer":[{"key":"token","value":"{{apiKey}}","type":"string"}]},
+  "item":[
+    {"name":"Create a sandbox verification","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"},{"key":"Idempotency-Key","value":"{{$guid}}"}],"url":"{{baseUrl}}/verifications","body":{"mode":"raw","raw":"{\n  \"customerReference\": \"sandbox_customer_001\",\n  \"reference\": \"sandbox_check_001\",\n  \"policyCode\": \"CONSUMER_VA_P0\"\n}"},"description":"Use a sandbox key. Persist the idempotency key outside this example when retrying the same logical create request."}},
+    {"name":"List verifications","request":{"method":"GET","url":"{{baseUrl}}/verifications?limit=25"}},
+    {"name":"Get verification","request":{"method":"GET","url":"{{baseUrl}}/verifications/{{verificationId}}"}},
+    {"name":"Renew hosted link","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"url":"{{baseUrl}}/verifications/{{verificationId}}/renew","body":{"mode":"raw","raw":"{}"}}},
+    {"name":"Cancel verification","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"url":"{{baseUrl}}/verifications/{{verificationId}}/cancel","body":{"mode":"raw","raw":"{}"}}}
+  ]
+}
