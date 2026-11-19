@@ -53,6 +53,3 @@ The public policy labels `CONSUMER_VA_P0` / `BUSINESS_P0` map to dedicated partn
 ## Live release requirements
 
 Production needs the dedicated Identity schema, HTTPS portal/backend origins, server-only signing secrets, production KMS, private evidence storage/scanner, approved active policies, live provider acceptance, client agreements, operational ownership and a deployed reconciliation/delivery worker. Readiness scripts report configuration and database facts; passing frontend tests alone is not live KYC approval.
-
-FIMS-only identifier lookup is not a full KYC decision. The existing FIMS and self-hosted biometric guides remain in `../the-backend/docs/identity`. Retention settings are review periods rather than automatic deletion promises.
-# identity
